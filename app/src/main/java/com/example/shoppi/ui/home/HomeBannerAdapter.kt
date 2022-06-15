@@ -1,4 +1,4 @@
-package com.example.shoppi
+package com.example.shoppi.ui.home
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -10,13 +10,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shoppi.model.Banner
+import com.example.shoppi.GlideApp
+import com.example.shoppi.R
 import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
 // ListAdapter: 데이터의 리스트 받아서 순차적으로 viewholder와 바인딩함.
 // 레이아웃 유지한 채로 데이터만 업데이트
 // BannerDiffCallback: 스크롤 변경됨에 따라서 데이터 변경 확인하고 업데이트
-class HomeBannerAdapter: ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(BannerDiffCallback()) {
+class HomeBannerAdapter: ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(
+    BannerDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeBannerViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_home_banner, parent, false)

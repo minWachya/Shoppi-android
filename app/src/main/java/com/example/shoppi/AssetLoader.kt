@@ -2,18 +2,18 @@ package com.example.shoppi
 
 import android.content.Context
 
-class AssetLoader {
+class AssetLoader(private val context: Context) {
     // 오류 처리 포함
-    fun getJsonString(context: Context, fileName: String): String? {
+    fun getJsonString(fileName: String): String? {
         // 성공, 실패로 나뉘는 작업 처리: runCatching
         // 성공 시 result, 실패 시 null 반환
         return kotlin.runCatching {
-            loadAsset(context, fileName)
+            loadAsset(fileName)
         }.getOrNull()
     }
 
     // 자원 읽어오기
-    private fun loadAsset(context: Context, fileName: String): String {
+    private fun loadAsset(fileName: String): String {
         // context 통해 app 전역에서 사용할 수 있는 정보에 접근 가능
         // + 리소스, 데이터베이스같은 시스템 자원에 접근 가능
         // json 파일 열고 자원사용하기(use 사용: 자원 정리 도와줌)
