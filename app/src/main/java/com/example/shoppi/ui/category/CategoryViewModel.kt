@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shoppi.model.Category
-import com.example.shoppi.repository.CategoryRepository
+import com.example.shoppi.repository.category.CategoryRepository
 import kotlinx.coroutines.launch
 
 class CategoryViewModel(private val categoryRepository: CategoryRepository): ViewModel() {

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shoppi.model.Banner
 import com.example.shoppi.model.Title
-import com.example.shoppi.repository.HomeRepository
+import com.example.shoppi.repository.home.HomeRepository
 
 // home 화면 그리는 데 필요한 데이터의 state holder 역할
 class HomeViewModel(private val homeRepository: HomeRepository): ViewModel() {
