@@ -1,6 +1,7 @@
 package com.example.shoppi.network
 
 import com.example.shoppi.model.Category
+import com.example.shoppi.model.CategoryDetail
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,6 +13,9 @@ import retrofit2.http.GET
 interface ApiClient {
     @GET("categories.json")    // 달라지는 주소만 선언
     suspend fun getCategories(): List<Category> // 카테고리 목록 데이터 받아오기
+
+    @GET("fashion-female.json")
+    suspend fun getCategoryDetail(): CategoryDetail
 
     // ApiClient 객체 생성
     companion object {
