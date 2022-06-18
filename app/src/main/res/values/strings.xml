@@ -16,4 +16,6 @@
     <string name="label_home_icon">홈</string>
     <string name="label_cart_icon">장바구니</string>
     <string name="label_category_new">NEW</string>
+    <string name="product_detail_btn_cart_string">장바구니 담기</string>
+    <string name="str_coupon">쿠폰 적용가</string>
 </resources>

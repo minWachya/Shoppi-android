@@ -2,11 +2,13 @@ package com.example.shoppi.network
 
 import com.example.shoppi.model.Category
 import com.example.shoppi.model.CategoryDetail
+import com.example.shoppi.model.ProductDetail
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 // retrofit 라이브러리 사용법 따라 생성함
 // 어떤 주소와 통신할지 선언
@@ -16,6 +18,9 @@ interface ApiClient {
 
     @GET("fashion-female.json")
     suspend fun getCategoryDetail(): CategoryDetail
+
+    @GET("products/{productId}.json")
+    suspend fun getProductDetail(@Path("productId") productId: String): ProductDetail
 
     // ApiClient 객체 생성
     companion object {
