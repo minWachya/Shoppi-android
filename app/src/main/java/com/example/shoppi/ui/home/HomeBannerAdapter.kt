@@ -11,7 +11,7 @@ import com.example.shoppi.databinding.ItemHomeBannerBinding
 // ListAdapter: 데이터의 리스트 받아서 순차적으로 viewholder와 바인딩함.
 // 레이아웃 유지한 채로 데이터만 업데이트
 // BannerDiffCallback: 스크롤 변경됨에 따라서 데이터 변경 확인하고 업데이트
-class HomeBannerAdapter: ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(BannerDiffCallback()) {
+class HomeBannerAdapter(private val viewModel: HomeViewModel): ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(BannerDiffCallback()) {
     private lateinit var binding: ItemHomeBannerBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeBannerViewHolder {
@@ -23,9 +23,10 @@ class HomeBannerAdapter: ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHol
         holder.bind(getItem(position))
     }
 
-    class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(banner: Banner) {
             binding.banner = banner
+            binding.viewModel = viewModel
             binding.executePendingBindings()
         }
     }

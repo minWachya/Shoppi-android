@@ -6,11 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.shoppi.*
+import com.example.shoppi.common.KEY_PRODUCT_ID
 import com.example.shoppi.databinding.FragmentHomeBinding
+import com.example.shoppi.ui.common.EventObserver
 import com.example.shoppi.ui.common.ViewModelFactory
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -35,7 +39,7 @@ class HomeFragment: Fragment() {
 
         setToolbar()
         setTopBanners()
-
+        setNavigation()
     }
 
     private fun setToolbar() {
@@ -48,7 +52,7 @@ class HomeFragment: Fragment() {
 
     private fun setTopBanners() {
         with(binding.viewpagerHomeBanner) {
-            adapter = HomeBannerAdapter().apply {
+            adapter = HomeBannerAdapter(viewModel).apply {
                 viewModel.topBanners.observe(viewLifecycleOwner) { banners ->
                     submitList(banners)
                 }
@@ -67,6 +71,14 @@ class HomeFragment: Fragment() {
                 this) { tab, position -> }.attach()
 
         }
+    }
+
+    private fun setNavigation() {
+        viewModel.openProductEvent.observe(viewLifecycleOwner, EventObserver { productId ->
+            findNavController().navigate(R.id.action_navigation_home_to_product_detail, bundleOf(
+                KEY_PRODUCT_ID to productId
+            ))
+        })
     }
 
 }
