@@ -10,6 +10,10 @@
     <string name="description_thumbnail_product_detail">상품 상세 대표 이미지</string>
     <string name="product_detail_image_title">상품설명</string>
     <string name="description_image_product_detail">상품 상세 이미지</string>
+    <string name="description_image_item_product_thumbnail">상품 썸네일 이미지</string>
+    <string name="description_btn_delete">삭제 버튼</string>
+    <string name="description_btn_minus">상품 마이너스 버튼</string>
+    <string name="description_btn_plus">상품 플러스 버튼</string>
 
     <!-- Navigation -->
     <string name="label_category">카테고리</string>
@@ -18,4 +22,6 @@
     <string name="label_category_new">NEW</string>
     <string name="product_detail_btn_cart_string">장바구니 담기</string>
     <string name="str_coupon">쿠폰 적용가</string>
+    <string name="str_btn_cart">선택한 상품 주문하기</string>
+
 </resources>
