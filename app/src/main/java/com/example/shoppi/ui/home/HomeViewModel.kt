@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shoppi.model.Banner
 import com.example.shoppi.model.Product
+import com.example.shoppi.model.Promotion
 import com.example.shoppi.model.Title
 import com.example.shoppi.repository.home.HomeRepository
 import com.example.shoppi.ui.common.Event
@@ -17,6 +18,9 @@ class HomeViewModel(private val homeRepository: HomeRepository): ViewModel() {
 
     private val _topBanners = MutableLiveData<List<Banner>>()
     val topBanners: LiveData<List<Banner>> = _topBanners
+
+    private val _promotions = MutableLiveData<Promotion>()
+    val promotions: LiveData<Promotion> = _promotions
 
     // 배너 선택 여부 담는 데이터
     private val _openProductEvent = MutableLiveData<Event<String>>()
@@ -36,6 +40,7 @@ class HomeViewModel(private val homeRepository: HomeRepository): ViewModel() {
         homeData?.let { homeData ->
             _title.value = homeData.title
             _topBanners.value = homeData.topBanners
+            _promotions.value = homeData.promotions
         }
     }
 }
