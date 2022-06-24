@@ -48,6 +48,10 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
     // recyclerview
     implementation("androidx.recyclerview:recyclerview:1.2.1")
+    // Room Database
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
 
     // Kotlin
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'

@@ -2,7 +2,7 @@ package com.example.shoppi.network
 
 import com.example.shoppi.model.Category
 import com.example.shoppi.model.CategoryDetail
-import com.example.shoppi.model.ProductDetail
+import com.example.shoppi.model.Product
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,7 +20,7 @@ interface ApiClient {
     suspend fun getCategoryDetail(): CategoryDetail
 
     @GET("products/{productId}.json")
-    suspend fun getProductDetail(@Path("productId") productId: String): ProductDetail
+    suspend fun getProductDetail(@Path("productId") productId: String): Product
 
     // ApiClient 객체 생성
     companion object {

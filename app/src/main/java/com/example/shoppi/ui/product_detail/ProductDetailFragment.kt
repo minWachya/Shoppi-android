@@ -10,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.shoppi.common.KEY_PRODUCT_ID
 import com.example.shoppi.ui.common.ViewModelFactory
 import com.example.shoppi.databinding.FragmentProductDetailBinding
+import com.example.shoppi.ui.common.EventObserver
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ProductDetailFragment: Fragment() {
 
@@ -29,10 +31,23 @@ class ProductDetailFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
         setNavigation()
         requireArguments().getString(KEY_PRODUCT_ID)?.let { productId ->
             setLayout(productId)
         }
+        setAddCart()
+    }
+
+    private fun setAddCart() {
+        viewModel.addCartEvent.observe(viewLifecycleOwner, EventObserver {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("장바구니에 상품이 담겼습니다.")
+                .setPositiveButton("확인") { dialog, which ->
+                    // notiog
+                }
+                .show()
+        })
     }
 
     private fun setNavigation() {

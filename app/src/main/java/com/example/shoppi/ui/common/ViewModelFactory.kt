@@ -7,6 +7,8 @@ import com.example.shoppi.AssetLoader
 import com.example.shoppi.ServiceLoader
 import com.example.shoppi.ServiceLoader.provideApiClient
 import com.example.shoppi.network.ApiClient
+import com.example.shoppi.repository.cart.CartLocalDataSource
+import com.example.shoppi.repository.cart.CartRepository
 import com.example.shoppi.repository.category.CategoryRemoteDataSource
 import com.example.shoppi.repository.category.CategoryRepository
 import com.example.shoppi.repository.category_detail.CategoryDetailRepository
@@ -15,6 +17,7 @@ import com.example.shoppi.repository.home.HomeAssetDataSource
 import com.example.shoppi.repository.home.HomeRepository
 import com.example.shoppi.repository.product_detail.ProductDetailRemoteDataSource
 import com.example.shoppi.repository.product_detail.ProductDetailRepository
+import com.example.shoppi.ui.cart.CartViewModel
 import com.example.shoppi.ui.category.CategoryViewModel
 import com.example.shoppi.ui.category_detail.CategoryDetailViewModel
 import com.example.shoppi.ui.home.HomeViewModel
@@ -42,7 +45,10 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
             }
             modelClass.isAssignableFrom(ProductDetailViewModel::class.java) -> {
                 val repository = ProductDetailRepository(ProductDetailRemoteDataSource(ServiceLoader.provideApiClient()))
-                ProductDetailViewModel(repository) as T
+                ProductDetailViewModel(repository, ServiceLoader.provideCartRepository(context)) as T
+            }
+            modelClass.isAssignableFrom(CartViewModel::class.java) -> {
+                CartViewModel(ServiceLoader.provideCartRepository(context)) as T
             }
             else -> {
                 throw IllegalArgumentException("Failed to create ViewModel: ${modelClass.name}")

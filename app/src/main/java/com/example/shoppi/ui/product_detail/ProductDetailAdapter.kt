@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppi.databinding.ItemProductDetailImageBinding
 import com.example.shoppi.model.Description
-import com.example.shoppi.model.ProductDetail
 
 class ProductDetailAdapter :
     ListAdapter<Description, ProductDetailAdapter.ProductDetailViewHolder>(ProductDetailDiffCallback()) {
